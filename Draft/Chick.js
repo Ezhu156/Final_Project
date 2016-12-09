@@ -1,10 +1,28 @@
 function Chick() {
-  var x = -5;//x-value for egg
-  var y = 800;//y-value for egg
-  var j= 500; //x-value for chick
-  var k= 810;//y-value for chick
+  var x = -5; //x-value for egg
+  var y = 800; //y-value for egg
+  var j = 500; //x-value for chick
+  var k = 810; //y-value for chick
+  var p = 0;
 
-  if (count < 500) image(egg, count, y);
+  if (count < 500) { //HOW TO MAKE THE OBJECT ROTATE AROUND ITSELF 
+    image(egg, count, 800);
+    /*
+    push();
+    translate(width / 2, height / 2);
+    rotate(count * TWO_PI / 360);
+    translate(-egg.width / 2, -egg.height / 2);
+    image(egg, count, y);
+    pop();
+
+  push();
+  rotate(2*PI);
+  translate(egg.width/2,egg.heihgt/2);
+  image(egg, count, 800);
+  pop();
+  */
+  }
+
   if (500 <= count && count <= 525) image(c1, 500, y);
   if (525 <= count && count <= 550) image(c2, 500, y);
   if (550 <= count && count <= 575) image(c3, 500, y);
@@ -18,7 +36,7 @@ function Chick() {
   //fill(0, 100);
   //stroke(255);
   //rect(500, 800, 61, 78);
-  if (count >= 800 && count <= 950) {
+  if (count >= 800 && start === false) {
     //if (value == 1) {
     image(hatched, j, k);
     image(eggbottom, 500, 830);
@@ -26,9 +44,6 @@ function Chick() {
     //  if (700 <= count) image(c9, 500, y);
     //  } //end value
   } //end count
-  
-  
-  
 } //end function
 
 //draw egg and basically make it stop motion of it cracking and the chick appearing
