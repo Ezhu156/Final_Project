@@ -1,16 +1,21 @@
 //HOW TO MODIFY THIS FUNCTION SO THAT IT ONLY ALLOWS ONE JUMP
 //Shiffman https://www.youtube.com/watch?v=cXgA1d_E-jY
 function Bird() {
-  this.y = c;
-
+  if (count<1000){
+  this.y = 305;
+  this.x= 500;
+  }
+  else{
+    this.y=c;
+  }
   this.gravity = 0.5;
   this.lift = -15; 
   this.velocity = 0;
 
   this.show = function() {
-    image(hatched, n, this.y);
-  }
-
+    if (count<1000) image(hatched, this.x, this.y);
+    if (count>= 1000) image(hatched,n,c);
+  } 
 
   this.up = function() {
     this.velocity += this.lift
