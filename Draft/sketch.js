@@ -1,6 +1,6 @@
 var family, hatched;
 var light, stairs, lighthouse, stairs_glow, lighthouse_glow; //ighthouse locations
-var barn, inside, ladder, ladder_glow, barn_glow, barn_exit; //barn locations
+var barn, inside, ladder, ladder_glow, barn_glow; //barn locations
 var windmill, in_wind, windmill_glow; //windmill locations
 var cloud1, cloud2; //cloud types
 var c = 810; //y location of chick
@@ -62,7 +62,6 @@ function preload() {
   windmill_glow = loadImage("pics/windmill_glow.png");
   stairs_glow = loadImage("pics/stairs_glow.png");
   lighthouse_glow = loadImage("pics/lighthouse_glow.png");
-  barn_exit = loadImage("pics/barn_exit.png");
   eagle = loadAnimation("pics/2.png", "pics/19.png");
   swoop = loadAnimation("pics/e2.png", "pics/e19.png");
   spin=loadAnimation("pics/w1.png","pics/w8.png");
