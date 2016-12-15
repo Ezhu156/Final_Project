@@ -239,7 +239,7 @@ function draw() {
       text("JUMP/FLY", 275, 245);
       text("MOVE LEFT", 275, 345);
       text("MOVE RIGHT", 275, 445);
-      text("MOUSE", 275, 525);
+      text("LEFT-CLICK", 275, 525);
       text("START", 425, 630);
     } //end help
   } //end count
