@@ -1,10 +1,10 @@
 function Sky() {
-
   this.sky = function() {
       //sky color
       background(0, g, b); //sky
-      if (count < 10000) b += .05, g += .025; //sky
-      else b -= .1, g -= .05; //sky
+      if (count < 10000) b += .05, g += .025; //sunrise
+      else b -= .05, g -= .025; //sunset
+      if (b<50) b=50, g=25;
     } //end sky
 
   this.sun = function() {
