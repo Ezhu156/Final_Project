@@ -136,7 +136,7 @@ function draw() {
   strokeWeight(.5);
   fill(255); //color of the congrats text
   textFont(flower, 200);
-  noStroke();
+
   //barn
   if ((count >= 1000) && (start_game === true)) {
     if (keyIsDown(LEFT_ARROW)) { //movement of the chick to the left
@@ -195,6 +195,7 @@ function draw() {
 
     //start location (where the egg comes in and hatches)
     else {
+      noStroke();
       fill(149, 255, 155);
       rect(0, 800, width, 100);
       image(arrow, 850, 720);
@@ -216,10 +217,12 @@ function draw() {
 
   if (count >= 1000) {
     if (start_game === false && help === false) {
-      noStroke();
+      strokeWeight(2);
+      stroke(0);
       textSize(200);
       fill(255);
       text("CHICKEN", 175, 400);
+      noStroke();
       fill(214, 208, 255);
       rect(230, 450, 250, 75);
       rect(530, 450, 250, 75);
