@@ -1,21 +1,37 @@
-var family, hatched; //family of chicks and the baby chick
-var light, stairs, lighthouse, stairs_glow, lighthouse_glow; //lighthouse locations
-var barn, inside, ladder, ladder_glow, barn_glow; //barn locations
-var windmill, in_wind, windmill_glow; //windmill locations
-var cloud1, cloud2; //cloud types
+var family; //family of chicks
+var hatched; //the baby chick
+//lighthouse locations
+var lights;
+var stairs;
+var lighthouse;
+var stairs_glow;
+var lighthouse_glow;
+//barn locations
+var barn;
+var inside;
+var ladder;
+var ladder_glow;
+var barn_glow;
+//windmill locations
+var windmill;
+var in_wind;
+var windmill_glow;
+//cloud types
+var cloud1;
+var cloud2;
 var c = 810; //y location of chick
 var n = 500; //x location of chick
 var a = 500; //duplicate of x location
 var count = 0; //time
-var s;//y location of the sun
-var t;//x location of the sun
+var s; //y location of the sun
+var t; //x location of the sun
 var b = 50; //blue value for the background
 var g = 0; //green value for the background
 var d = 0; //x location of the clouds
 var e = 100; //y location of the clouds
 var bird; //class for the chick flying
 var arrow; //arrow that shows which way the chick can go
-var leftarrow; //arrow that shows which way the chick can go
+var left_arrow; //arrow that shows which way the chick can go
 var fam_index; //how the family ends up in a random location
 var ex_count = -250; //x location of eagle
 var ey_count = 150; //y location of eagle 
@@ -23,16 +39,17 @@ var swoop; //eagle + chick
 var eagle; //eagle
 var ex = -50; //eagle + chick x location
 var spin; //spinning of the windmill
-var outside, exit_glow; //exit sign
+var outside;
+var exit_glow; //exit sign
 var ending; //end sequence of the narration
 var happy; //ending animation
 var flower; //flower font
-var mill;//for windmill class
-var farm;//for barn class
-var chick;//for chick class
-var house;//for lighthout class
-var eagleIntro;//for eagle class
-var sky;//for sky class
+var mill; //for windmill class
+var farm; //for barn class
+var chick; //for chick class
+var house; //for lighthout class
+var eagleIntro; //for eagle class
+var sky; //for sky class
 var ending; //for ending class
 
 var barn_out = true;
@@ -43,7 +60,6 @@ var mill_in = false;
 var light_out = true;
 var light_in = false;
 var light_up = false;
-var light_on = false;
 
 //indexes for the location of the family
 var fam_index0 = false;
