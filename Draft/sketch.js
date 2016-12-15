@@ -136,6 +136,7 @@ function draw() {
   strokeWeight(.5);
   fill(255); //color of the congrats text
   textFont(flower, 200);
+  noStroke();
   //barn
   if ((count >= 1000) && (start_game === true)) {
     if (keyIsDown(LEFT_ARROW)) { //movement of the chick to the left
