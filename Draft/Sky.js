@@ -10,9 +10,9 @@ function Sky() {
   this.sun = function() {
       //location of the sun
       if (count <= 8000) s -= .1; //sun rise
-      if (count > 8000 && count <= 9500) s -= .1, t -= .2; //sun moving towards center
-      if (count > 9500 && count <= 12000) s += .1, t -= .2; //sun moving towards left
-      if (count > 12000 && count <= 19000) s += .1; //sunset
+      if (count > 8000 && count <= 9500) s -= 0.1, t -= 0.2; //sun moving towards center
+      if (count > 9500 && count <= 12000) s += 0.1, t -= 0.2; //sun moving towards left
+      if (count > 12000 && count <= 19000) s += 0.1; //sunset
 
       //sun
       noStroke();
