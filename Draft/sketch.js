@@ -255,7 +255,7 @@ function draw() {
       stroke(0);
       textSize(200);
       fill(255);
-      text("LOST", 275, 400);
+      text("LOST CHICK", 20, 400);
       noStroke();
       fill(214, 208, 255);
       rect(230, 450, 250, 75);
