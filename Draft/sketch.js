@@ -19,16 +19,16 @@ var windmill_glow;
 //cloud types
 var cloud1;
 var cloud2;
-var c = 810; //y location of chick
-var n = 500; //x location of chick
-var a = 500; //duplicate of x location
-var count = 0; //time
+var c; //y location of chick
+var n; //x location of chick
+var a; //duplicate of x location
+var count; //time
 var s; //y location of the sun
 var t; //x location of the sun
-var b = 50; //blue value for the background
-var g = 0; //green value for the background
-var d = 0; //x location of the clouds
-var e = 100; //y location of the clouds
+var b; //blue value for the background
+var g; //green value for the background
+var d; //x location of the clouds
+var e; //y location of the clouds
 var bird; //class for the chick flying
 var arrow; //arrow that shows which way the chick can go
 var left_arrow; //arrow that shows which way the chick can go
@@ -52,26 +52,29 @@ var eagleIntro; //for eagle class
 var sky; //for sky class
 var ending; //for ending class
 
-var barn_out = true;
-var barn_in = false;
-var barn_up = false;
-var mill_out = true;
-var mill_in = false;
-var light_out = true;
-var light_in = false;
-var light_up = false;
+var barn_out;
+var barn_in;
+var barn_up;
+var mill_out;
+var mill_in;
+var light_out;
+var light_in;
+var light_up;
 
 //indexes for the location of the family
-var fam_index0 = false;
-var fam_index1 = false;
-var fam_index2 = false;
-var fam_index3 = false;
-var fam_index4 = false;
+var fam_index0;
+var fam_index1;
+var fam_index2;
+var fam_index3;
+var fam_index4;
 
-var start_game = false; //button to press to begin the game
-var help = false; //control page for the game
+var found_fam; //this controls whether or not the family has been found
+
+var start_game; //button to press to begin the game
+var help; //control page for the game
 var controls; //controls for the game
-var back_control = false; //back button for control page
+var back_control; //back button for control page
+var game_over; //if family is not found and sun has set, the game is over
 
 
 function preload() {
@@ -107,6 +110,7 @@ function preload() {
 
 function setup() {
   createCanvas(1000, 900);
+  count = 0;
   bird = new Bird();
   mill = new Windmill();
   house = new Lighthouse();
@@ -119,6 +123,36 @@ function setup() {
   console.log(fam_index);
   s = 950; //y location of the sun
   t = 850; //x location of the sun
+  b = 50; //blue value for the background
+  g = 0; //green value for the background
+  d = 0; //x location of the clouds
+  e = 100; //y location of the clouds
+  barn_out = true;
+  barn_in = false;
+  barn_up = false;
+  mill_out = true;
+  mill_in = false;
+  light_out = true;
+  light_in = false;
+  light_up = false;
+
+  //indexes for the location of the family
+  fam_index0 = false;
+  fam_index1 = false;
+  fam_index2 = false;
+  fam_index3 = false;
+  fam_index4 = false;
+
+  found_fam = false; //this controls whether or not the family has been found
+
+  start_game = false; //button to press to begin the game
+  help = false; //control page for the game
+  back_control = false; //back button for control page
+  game_over = false; //if family is not found and sun has set, the game is over
+
+  c = 810; //y location of chick
+  n = 500; //x location of chick
+  a = 500; //duplicate of x location
 } //end setup
 
 
@@ -153,12 +187,12 @@ function draw() {
       if ((((mouseX >= 184 && mouseX < 446)) && (mouseY >= 572 && mouseY < 801))) image(barn_glow, 168, 556); //if mouse is over the doors then the door will glow
       if (barn_in === true) { //bottom level of the barn
         farm.inside();
-        if (fam_index2 === true) text("Congrats!", 150, 300), ending.barn(); //if family is there then the text will show up along with the family
+        if (fam_index2 === true) text("Congrats!", 150, 200), ending.barn(), found_fam = true; //if family is there then the text will show up along with the family
         if ((mouseX >= 885 && mouseX < 985) && (mouseY >= 15 && mouseY < 52)) image(exit_glow, 870, 0); //if the mouse is over the exit button, then it will glow
         if ((mouseX >= 814 && mouseX < 915) && (mouseY >= 145 && mouseY < 900)) image(ladder_glow, 800, 130); //if mouse is over the ladder, the ladder will glow
       } else if (barn_up === true) { //top level of the barn
         farm.upper();
-        if (fam_index3 === true) text("Congrats!", 150, 300), ending.barn(); //if family is there then the text will show up along with the family
+        if (fam_index3 === true) text("Congrats!", 150, 200), ending.barn(), found_fam = true; //if family is there then the text will show up along with the family
         if ((mouseX >= 885 && mouseX < 985) && (mouseY >= 15 && mouseY < 52)) image(exit_glow, 870, 0); //if mouse is over the exit button, then it will glow
       } //end barn_up
     } //end barn
@@ -172,10 +206,10 @@ function draw() {
         house.inside();
         if ((mouseX >= 0 && mouseX < 307) && (mouseY >= 513 && mouseY < 810)) image(stairs_glow, -14, -15); //if mouse is over the stairs, then they will glow
         if ((mouseX >= 885 && mouseX < 985) && (mouseY >= 15 && mouseY < 52)) image(exit_glow, 870, 0); //if mouse is over the exit button, then it will glow
-        if (fam_index0 === true) text("Congrats!", 150, 300), ending.lighthouse(); //if family is there then the text will show up along with the family
+        if (fam_index0 === true) text("Congrats!", 150, 200), ending.lighthouse(), found_fam = true; //if family is there then the text will show up along with the family
       } else if (light_up === true) { //top of the lighthouse
         house.upstairs();
-        if (fam_index1 === true) text("Congrats!", 150, 300), ending.lighthouse(); //if family is there then the text will show up along with the family
+        if (fam_index1 === true) text("Congrats!", 150, 200), ending.lighthouse(), found_fam = true; //if family is there then the text will show up along with the family
       } //end value 2
     } //end lighthouse
 
@@ -185,7 +219,7 @@ function draw() {
       if (mill_in === true) { //inside the windmill
         mill.inside();
         if ((mouseX >= 885 && mouseX < 985) && (mouseY >= 15 && mouseY < 52)) image(exit_glow, 870, 0); //if the mouse is over the exit button, then it will glow
-        if (fam_index4 === true) text("Congrats!", 150, 300), ending.windmill(); //if family is there then the text will show up along with the family
+        if (fam_index4 === true) text("Congrats!", 150, 200), ending.windmill(), found_fam = true; //if family is there then the text will show up along with the family
       } //end mill_in true
       if (mill_out === true) { //outside the windmill
         mill.outside();
@@ -247,9 +281,20 @@ function draw() {
     } //end help
   } //end count
 
-  count += 1;
-  //textSize(50);
-  //text("count: " + count, 5, 100);
+  if (((count > 8000) && (found_fam === false)) || (found_fam === true)) {
+    start_game = true;
+    strokeWeight(2);
+    stroke(0);
+    textSize(175);
+    fill(255);
+    text("GAME OVER", 75, 425);
+    textSize(50);
+    noStroke();
+    fill(214, 208, 255);
+    rect(375, 475, 250, 75);
+    fill(255);
+    text("RESTART", 400, 530);
+  }
 
   //this is how the family ends up in a random location each time the program runs
   if (fam_index >= 0 && fam_index < 1) fam_index0 = true; //index for inside the lighthouse
@@ -259,6 +304,15 @@ function draw() {
   if (fam_index >= 4 && fam_index < 5) fam_index4 = true; //index for inside the windmill
 
 
+  count += 1;
+  //textSize(50);
+  //text("count: " + count, 5, 100);
+
+  if (game_over === true) resetcode();
+  //if (count == 1000) {
+    //console.log(b);
+    //console.log(g);
+  //}
 } //end draw
 
 function mousePressed() { //affects the locations
@@ -266,7 +320,7 @@ function mousePressed() { //affects the locations
     light_in = true;
     light_out = false;
     light_up = false;
-  } else if ((mouseX >= 0 && mouseX < 307) && (mouseY >= 513 && mouseY < 810)) { //if the stairs are pressed then location will change
+  } else if ((mouseX >= 0 && mouseX < 307) && (mouseY >= 513 && mouseY < 810) && (light_in===true)) { //if the stairs are pressed then location will change
     light_up = true;
     light_in = false;
     light_out = false;
@@ -299,6 +353,8 @@ function mousePressed() { //affects the locations
   } else if ((mouseX >= 375 && mouseX < 625) && (mouseY >= 575 && mouseY < 650)) {
     back_control = true;
     start_game = true;
+  } else if (((count > 8000) || (found_fam === true)) && ((mouseX >= 375 && mouseX < 625) && (mouseY >= 475 && mouseY < 550))) {
+    game_over = true;
   } //end if
 } //end mousePressed
 
@@ -307,3 +363,47 @@ function keyPressed() {
     bird.up();
   } //end keyCode
 } //end keyPressed
+
+function resetcode() { //resets the code after sunsets and button is clicked
+  count = 1000.1;
+  bird = new Bird();
+  mill = new Windmill();
+  house = new Lighthouse();
+  farm = new Barn();
+  chick = new Chick();
+  eagleIntro = new Eagle();
+  fam_index = random(0, 5);
+  sky = new Sky();
+  ending = new Conclusion();
+  console.log(fam_index);
+  s = 750; //y location of the sun
+  t = 850; //x location of the sun
+  b = 150;
+  g = 50;
+  barn_out = true;
+  barn_in = false;
+  barn_up = false;
+  mill_out = true;
+  mill_in = false;
+  light_out = true;
+  light_in = false;
+  light_up = false;
+
+  //indexes for the location of the family
+  fam_index0 = false;
+  fam_index1 = false;
+  fam_index2 = false;
+  fam_index3 = false;
+  fam_index4 = false;
+
+  found_fam = false; //this controls whether or not the family has been found
+
+  start_game = false; //button to press to begin the game
+  help = false; //control page for the game
+  back_control = false; //back button for control page
+  game_over = false; //if family is not found and sun has set, the game is over
+
+  c = 810; //y location of chick
+  n = 500; //x location of chick
+  a = 500; //duplicate of x location
+}
